@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 export const COLUMNS = [
   {
     Header: "Id",
@@ -18,6 +19,8 @@ export const COLUMNS = [
     Header: "Date of Birth",
     Footer: "Date of Birth",
     accessor: "date_of_birth",
+    Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy') }
+    // it is used for formatting the date of birth column to the format that we want to display in the table and we can use the format function from the date-fns library to format the date to the format that we want to display in the table
   },
   {
     Header: "Country",
