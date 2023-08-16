@@ -10,7 +10,7 @@ const BasicTable = () => {
     columns,
     data,
   });
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  const { getTableProps, getTableBodyProps, headerGroups,footerGroups, rows, prepareRow } =
     tableInstance;
   return (
     <table {...getTableProps()}>
@@ -37,6 +37,20 @@ const BasicTable = () => {
           );
         })}
       </tbody>
+      {/* // this is the footer of the table where we will loop through the footer groups and render the data in the table  */}
+      <tfoot>
+          {footerGroups.map(footerGroup => (
+              <tr {...footerGroup.getFooterGroupProps()}>
+                  {footerGroup.headers.map(column => (
+                      <td {...column.getFooterProps()}>
+                          {
+                              column.render('Footer')
+                          }
+                      </td>
+                  ))}
+              </tr>
+          ))}
+      </tfoot>
     </table>
   );
 };
