@@ -1,18 +1,33 @@
 import React, { useMemo } from "react";
-import { useTable, useGlobalFilter } from "react-table"; // useGlobalFilter is used to filter table globally
+import { useTable, useGlobalFilter, useFilters } from "react-table"; // useGlobalFilter is used to filter table globally
 import { COLUMNS } from "./columns";
 import MOCK_DATA from "./MOCK_DATA.json";
 import "./table.css";
 import GlobalFilter from "./GlobalFilter";
+import  ColumnFilter  from "./ColumnFilter";
+
 const FilteringTable = () => {
   const columns = useMemo(() => COLUMNS, []); // this is the first way to memoize the columns and data and it is the recommended way to do it
 
   // const columns = useMemo(() => GROUPED_COLUMNS, []); // This is the second way to memoize the columns and data and it is the recommended way to do it .
   const data = useMemo(() => MOCK_DATA, []);
-  const tableInstance = useTable({
-    columns,
-    data,
-  },useGlobalFilter);  
+
+  //
+  const defaultColumn = useMemo(() => {
+    return {
+      Filter: ColumnFilter,
+    };
+  }, []);
+
+  const tableInstance = useTable(
+    {
+      columns,
+      data,
+      defaultColumn
+    },
+    useFilters,
+    useGlobalFilter
+  );
 
   const {
     getTableProps,
@@ -34,7 +49,10 @@ const FilteringTable = () => {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                <th {...column.getHeaderProps()}>
+                  {column.render("Header")}
+                  <div>{column.canFilter ? column.render("Filter") : null}</div>
+                </th>
               ))}
             </tr>
           ))}
