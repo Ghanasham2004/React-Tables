@@ -34,3 +34,42 @@ input {
   border: none;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
+
+.controls{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 1.4rem;
+}
+
+
+button{
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #35f1a3;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled{
+  background-color: #c7c7c7;
+  color: #000000;
+  cursor: not-allowed;
+}
+
+select{
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #35f1a3;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
