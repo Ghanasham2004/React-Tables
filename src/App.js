@@ -1,9 +1,9 @@
 import "./App.css";
-import RowSelection from "./components/RowSelection";
+import ColumnOrder from "./components/ColumnOrder";
 function App() {
   return (
     <div className="App">
-      <RowSelection />
+      <ColumnOrder/>
     </div>
   );
 }
