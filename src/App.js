@@ -1,9 +1,9 @@
 import "./App.css";
-import ColumnHiding from "./components/ColumnHiding";
+import StickyTable from "./components/StickyTable";
 function App() {
   return (
     <div className="App">
-      <ColumnHiding/>
+      <StickyTable />
     </div>
   );
 }
